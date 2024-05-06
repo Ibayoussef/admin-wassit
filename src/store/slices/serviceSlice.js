@@ -40,9 +40,9 @@ export const getService = createAsyncThunk(
 );
 export const updateService = createAsyncThunk(
     'auth/updateService',
-    async (data, { rejectWithValue }) => {
+    async (payload, { rejectWithValue }) => {
         try {
-            const data = await fetchAxios(`services/${data.id}`, 'PUT', data, token);
+            const data = await fetchAxios(`services/${payload.id}`, 'PUT', payload, token);
 
             return data;
         } catch (error) {
@@ -52,9 +52,9 @@ export const updateService = createAsyncThunk(
 );
 export const createService = createAsyncThunk(
     'auth/createService',
-    async (data, { rejectWithValue }) => {
+    async (payload, { rejectWithValue }) => {
         try {
-            const data = await fetchAxios(`services`, 'POST', data, token);
+            const data = await fetchAxios(`services`, 'POST', payload, token);
 
             return data;
         } catch (error) {

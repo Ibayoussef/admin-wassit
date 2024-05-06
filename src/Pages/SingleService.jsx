@@ -62,7 +62,7 @@ function SingleService({ create }) {
     };
     const handleImageUpload = async () => {
         const formData = new FormData();
-        formData.append('image', image);
+        formData.append('imageUrl', image);
 
         setImageUploading(true);
         try {
@@ -97,6 +97,7 @@ function SingleService({ create }) {
     }, [dispatch]);
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log(serviceData)
         setLoading(true);
         try {
             create ? await dispatch(createService(serviceData)).unwrap() : await dispatch(updateService({ id, ...serviceData })).unwrap();
@@ -155,7 +156,7 @@ function SingleService({ create }) {
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                 <TextField
                     margin="normal"
-                    required
+
                     fullWidth
                     id="fr"
                     label="French Name"
@@ -167,7 +168,7 @@ function SingleService({ create }) {
                 />
                 <TextField
                     margin="normal"
-                    required
+
                     fullWidth
                     name="ar"
                     label="Arabic Name"
@@ -208,7 +209,7 @@ function SingleService({ create }) {
                     <Select
                         labelId="included-services-label"
                         multiple
-                        value={serviceData.included_services.map(p => p.id)}
+                        value={serviceData.included_services.map(p => p?.id ?? p)}
                         onChange={e => handleMultiSelectChange(e, 'included_services')}
                         input={<OutlinedInput label="Included Services" />}
                         renderValue={(selected) => selected?.map(id => allServices.find(s => s.id === parseInt(id))?.fr).join(', ')}
@@ -228,7 +229,7 @@ function SingleService({ create }) {
                     <Select
                         labelId="optional-services-label"
                         multiple
-                        value={serviceData?.optional_services.map(p => p.id)}
+                        value={serviceData?.optional_services.map(p => p?.id ?? p)}
                         onChange={e => handleMultiSelectChange(e, 'optional_services')}
                         input={<OutlinedInput label="Optional Services" />}
                         renderValue={(selected) => selected.map(id => allServices.find(s => s.id == id)?.fr).join(', ')}
