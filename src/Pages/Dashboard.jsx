@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAnalytics } from '../store/slices/analyticsSlice';
+import { getAnalytics, storeAnalytics } from '../store/slices/analyticsSlice';
 import { Box, CircularProgress, Grid, Paper, Stack, Typography } from '@mui/material';
 import UserPieChart from '../Components/UserPieChart';
 import IncomeLineChart from '../Components/IncomLineChart';
@@ -21,7 +21,9 @@ function Dashboard() {
         const fetchUsers = async () => {
             setLoading(true);
             try {
+                await dispatch(storeAnalytics()).unwrap();
                 await dispatch(getAnalytics()).unwrap();
+
                 await dispatch(getUsers()).unwrap();
             } catch (error) {
                 console.error('Failed to fetch users:', error);

@@ -14,6 +14,19 @@ export const getAnalytics = createAsyncThunk(
         }
     }
 );
+export const storeAnalytics = createAsyncThunk(
+    'auth/storeanalytics',
+    async (_, { rejectWithValue }) => {
+        try {
+            const data = await fetchAxios('analytics/store', 'POST', null, token);
+
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
 
 export const analyticsSlice = createSlice({
     name: 'analytics',
