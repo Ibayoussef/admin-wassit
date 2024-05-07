@@ -18,10 +18,13 @@ import {
   Typography,
   TablePagination,
   Stack,
+  Button,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function Users() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { users } = useSelector((state) => state.users);
   const [loading, setLoading] = useState(false);
   const [nameFilter, setNameFilter] = useState('');
@@ -76,9 +79,19 @@ function Users() {
 
   return (
     <Box sx={{ maxWidth: 1000, margin: 'auto', mb: 4 }}>
-      <Typography variant="h4" gutterBottom component="div">
+      <Stack direction={'row'} gap={2}><Typography variant="h4" gutterBottom component="div">
         User Management
       </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate('/pro/create')}
+          sx={{ mr: 1 }}
+        >
+          Create New Pro User
+        </Button>
+      </Stack>
+
       <Stack direction={'row'} gap={2}>
         {' '}
         <TextField

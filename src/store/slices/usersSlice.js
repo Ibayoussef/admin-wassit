@@ -14,7 +14,18 @@ export const getUsers = createAsyncThunk(
     }
   }
 );
+export const createUser = createAsyncThunk(
+  'auth/createUser',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const data = await fetchAxios('register', 'POST', payload, token);
 
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 export const userSlice = createSlice({
   name: 'users',
   initialState: {

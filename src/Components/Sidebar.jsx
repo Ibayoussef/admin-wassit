@@ -20,6 +20,7 @@ import {
   DashboardOutlined,
   CleaningServicesOutlined,
   AssignmentIndOutlined,
+  WorkHistoryOutlined,
 } from '@mui/icons-material';
 
 const Sidebar = () => {
@@ -34,6 +35,7 @@ const Sidebar = () => {
     { text: 'Requests', icon: <RequestPageOutlined />, url: '/' },
     { text: 'Dashboard', icon: <DashboardOutlined />, url: 'dashboard' },
     { text: 'Users', icon: <PeopleOutline />, url: 'users' },
+    { text: 'Projects', icon: <WorkHistoryOutlined />, url: 'projects' },
     { text: 'Services', icon: <CleaningServicesOutlined />, url: 'services' },
     { text: 'Assignements', icon: <AssignmentIndOutlined />, url: 'assign' },
     { text: 'Reviews', icon: <RateReviewOutlined />, url: 'reviews' },

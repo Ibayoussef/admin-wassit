@@ -14,6 +14,8 @@ import Dashboard from './Pages/Dashboard.jsx';
 import Services from './Pages/Services.jsx';
 import SingleService from './Pages/SingleService.jsx';
 import Assignement from './Pages/Assignement.jsx';
+import Projects from './Pages/Projects.jsx';
+import CreateUser from './Pages/CreateUser.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,9 +26,11 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'users', element: <Users /> },
       { path: 'chat', element: <Chat /> },
+      { path: 'projects', element: <Projects /> },
       { path: 'services', element: <Services /> },
       { path: 'services/:id', element: <SingleService /> },
       { path: 'services/create', element: <SingleService create /> },
+      { path: 'pro/create', element: <CreateUser /> },
       { path: 'assign', element: <Assignement /> },
       { path: 'formdata', element: <FormData /> },
       { path: 'receipts', element: <Receipts /> },

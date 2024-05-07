@@ -15,7 +15,7 @@ export const getProjects = createAsyncThunk(
     }
 );
 export const assignProject = createAsyncThunk(
-    'auth/getProjects',
+    'auth/assignProject',
     async ({ id, proId }, { rejectWithValue }) => {
         try {
             const data = await fetchAxios(`projects/${id}/assign`, 'GET', { pro_id: proId }, token);
