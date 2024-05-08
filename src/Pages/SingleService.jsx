@@ -6,7 +6,9 @@ import {
     Box, CircularProgress, TextField, Button, FormControl, InputLabel, Select, MenuItem, Typography, Paper,
     OutlinedInput,
     Checkbox,
-    ListItemText
+    ListItemText,
+    FormControlLabel,
+    Switch
 } from '@mui/material';
 
 const ITEM_HEIGHT = 48;
@@ -51,10 +53,10 @@ function SingleService({ create }) {
     }, [currentService, dispatch]);
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        const { name, value, checked, type } = event.target;
         setServiceData(prev => ({
             ...prev,
-            [name]: value
+            [name]: type === 'checkbox' ? checked : value
         }));
     };
     const handleImageChange = (event) => {
@@ -222,6 +224,19 @@ function SingleService({ create }) {
                             </MenuItem>
                         ))}
                     </Select>
+                </FormControl>
+                <FormControl fullWidth margin="normal">
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                checked={serviceData.optional}
+                                onChange={handleChange}
+                                name="optional"
+                                color="primary"
+                            />
+                        }
+                        label="Optional"
+                    />
                 </FormControl>
 
                 <FormControl fullWidth margin="normal">

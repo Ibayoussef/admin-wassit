@@ -35,7 +35,10 @@ const Assignement = () => {
 
     const handleAssignPro = (projectId) => {
         const proId = selectedPros[projectId];
-        dispatch(assignProject({ id: projectId, proId }));
+        dispatch(assignProject({ id: projectId, proId })).then(() => {
+            dispatch(getProjects());
+            dispatch(getUsers());
+        });
     };
 
     if (projectsLoading) return <CircularProgress />;

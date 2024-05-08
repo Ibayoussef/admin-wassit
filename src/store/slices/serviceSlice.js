@@ -66,7 +66,7 @@ export const updateServiceImage = createAsyncThunk(
     'auth/updateServiceImage',
     async ({ id, formData }, { rejectWithValue }) => {
         try {
-            const data = await fetchAxios(`services/${id}`, 'PUT', formData, token);
+            const data = await fetchAxios(`services/${id}/upload`, 'POST', formData, token);
 
             return data;
         } catch (error) {

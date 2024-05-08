@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: 'https://www.wassit.biz/api/',
-  // baseURL: 'http://localhost:4000/api/',
+  // baseURL: 'https://www.wassit.biz/api/',
+  baseURL: 'http://localhost:4000/api/',
 });
 
 export const fetchAxios = async (

@@ -13,6 +13,9 @@ function CreateUser() {
         phone: '',
         role: 'pro',
         password: "Password123$",
+        address: '',
+        coords: '',
+        description: null,
         domain: ''
     })
     const handleSubmit = async (event) => {
@@ -67,6 +70,27 @@ function CreateUser() {
                     type="number"
                     id="phone"
                     value={user.phone}
+                    onChange={handleChange}
+                />
+                <TextField
+                    margin="normal"
+                    fullWidth
+                    name="address"
+                    label="Address"
+                    type="text"
+                    id="address"
+                    value={user.address}
+                    onChange={handleChange}
+                />
+                <TextField
+                    margin="normal"
+                    fullWidth
+                    name="coords"
+                    label="Coordinates"
+                    type="text"
+                    id="coords"
+                    placeholder="e.g., 40.7128, -74.0060"
+                    value={user.coords}
                     onChange={handleChange}
                 />
                 <FormControl fullWidth margin="normal">

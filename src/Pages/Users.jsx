@@ -76,10 +76,10 @@ function Users() {
       </Box>
     );
   }
-
+  console.log(users)
   return (
     <Box sx={{ maxWidth: 1000, margin: 'auto', mb: 4 }}>
-      <Stack direction={'row'} gap={2}><Typography variant="h4" gutterBottom component="div">
+      <Stack direction={'row'} sx={{ mb: 2 }} gap={2}><Typography variant="h4" gutterBottom component="div">
         User Management
       </Typography>
         <Button
@@ -151,15 +151,15 @@ function Users() {
             {users
               .filter((user) => {
                 return (
-                  user.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
+                  user?.name?.toLowerCase().includes(nameFilter?.toLowerCase()) &&
                   user.email
-                    .toLowerCase()
-                    .includes(emailFilter.toLowerCase()) &&
+                    ?.toLowerCase()
+                    ?.includes(emailFilter?.toLowerCase()) &&
                   user.phone.includes(phoneFilter) &&
                   user.address
-                    .toLowerCase()
-                    .includes(addressFilter.toLowerCase()) &&
-                  user.role.toLowerCase().includes(roleFilter.toLowerCase()) &&
+                    ?.toLowerCase()
+                    ?.includes(addressFilter?.toLowerCase()) &&
+                  user.role?.toLowerCase()?.includes(roleFilter?.toLowerCase()) &&
                   (availabilityFilter
                     ? user.available === availabilityFilter
                     : true)
@@ -176,7 +176,7 @@ function Users() {
                       {field === 'profile_picture' && user[field] ? (
                         <Avatar src={user[field]} alt={user.name} />
                       ) : (
-                        String(user[field])
+                        String(user[field]) ?? ''
                       )}
                     </TableCell>
                   ))}
